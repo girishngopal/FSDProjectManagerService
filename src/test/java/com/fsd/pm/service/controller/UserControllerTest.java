@@ -39,7 +39,7 @@ public class UserControllerTest {
 		when(userservice.getUser(Mockito.anyLong())).thenReturn(user);
 		this.mockMvc.perform(get("/user/getUser/1"))			
 			.andExpect(status().isOk())
-			.andExpect(jsonPath("$.firstName",is("firstName")));
+			.andExpect(jsonPath("$.firstName",is("firstName"))); 
 			
 					
 	}
