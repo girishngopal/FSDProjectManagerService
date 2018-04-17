@@ -42,7 +42,7 @@ public class UserControllerTest {
 		user2.setFirstName("firstName2");
 		user2.setLastName("lastName2");
 		when(userservice.getAllUsers()).thenReturn(users);
-		this.mockMvc.perform(get("/user/getUser/1"))			
+		this.mockMvc.perform(get("/user/getAllUsers"))			
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$",hasSize(2)))
 			.andExpect(jsonPath("$[0].firstName",is("firstName"))); 
