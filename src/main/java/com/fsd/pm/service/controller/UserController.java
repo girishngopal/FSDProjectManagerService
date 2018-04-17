@@ -28,11 +28,6 @@ public class UserController {
 		return "Saved";
 	}
 	
-	@GetMapping(path="/getUser/{id}") // Map ONLY GET Requests
-	public User getUser (@PathVariable("id") long id) {
-		User user= userService.getUser(id);		  
-		return user;
-	}
 	
 	
 	@GetMapping(path="/getAllUsers") // Map ONLY GET Requests
