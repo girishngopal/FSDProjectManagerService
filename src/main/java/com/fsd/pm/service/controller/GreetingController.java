@@ -1,8 +1,5 @@
 package com.fsd.pm.service.controller;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
-
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +19,6 @@ public class GreetingController {
 			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 
 		Greeting greeting = new Greeting(String.format(TEMPLATE, name));
-		greeting.add(linkTo(methodOn(GreetingController.class).greeting(name)).withSelfRel());
-
-		return new ResponseEntity<>(greeting, HttpStatus.OK);
+				return new ResponseEntity<>(greeting, HttpStatus.OK);
 	}
 }
