@@ -18,7 +18,7 @@ public class GreetingController {
 	public HttpEntity<Greeting> greeting(
 			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 
-		Greeting greeting = new Greeting(String.format(TEMPLATE, name));
+		Greeting greeting = new Greeting("hELLO");
 				return new ResponseEntity<>(greeting, HttpStatus.OK);
 	}
 }

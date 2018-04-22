@@ -5,14 +5,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Greeting  {
 
-    private final String content;
+	String firstName;
+
+	String lastName;
+
+	
 
     @JsonCreator
-    public Greeting(@JsonProperty("content") String content) {
-        this.content = content;
+    public Greeting(@JsonProperty("firstName") String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getContent() {
-        return content;
-    }
+
+
+	public String getfirstName() {
+		return firstName;
+	}
+
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+ 
+    
 }

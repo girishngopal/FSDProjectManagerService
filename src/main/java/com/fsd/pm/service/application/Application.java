@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories("com.fsd.pm.service.persistence")
 @EntityScan("com.fsd.pm.service.model")
-@ComponentScan(basePackages= {"com.fsd.pm.service.controller"})
+@ComponentScan(basePackages= {"com.fsd.pm.service.controller","com.fsd.pm.service.modelservice"})
 public class Application {
 
 	public static void main(String[] args) {

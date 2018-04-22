@@ -6,22 +6,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Project {
-	
+public class Task {
+
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     Long id;
 	
-	String projectName;
+	@ManyToOne
+	Project project;
+	
+	@ManyToOne
+	ParentTask parentTask;
+		
+	String taskName;
 	
 	Date startDate;
 	
-
 	Date endDate;
 	
 	Integer priority;
+	
+	Integer statusCode;
 
 	public Long getId() {
 		return id;
@@ -31,12 +39,28 @@ public class Project {
 		this.id = id;
 	}
 
-	public String getProjectName() {
-		return projectName;
+	public Project getProject() {
+		return project;
 	}
 
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public ParentTask getParentTask() {
+		return parentTask;
+	}
+
+	public void setParentTask(ParentTask parentTask) {
+		this.parentTask = parentTask;
+	}
+
+	public String getTaskName() {
+		return taskName;
+	}
+
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
 	}
 
 	public Date getStartDate() {
@@ -63,5 +87,11 @@ public class Project {
 		this.priority = priority;
 	}
 
+	public Integer getStatusCode() {
+		return statusCode;
+	}
 
+	public void setStatusCode(Integer statusCode) {
+		this.statusCode = statusCode;
+	}
 }
