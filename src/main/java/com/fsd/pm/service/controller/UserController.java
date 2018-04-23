@@ -1,12 +1,11 @@
 package com.fsd.pm.service.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fsd.pm.service.model.User;
@@ -21,20 +20,16 @@ public class UserController {
 	
 	
 	
-	/*@GetMapping(path="/addUser") // Map ONLY GET Requests
-	public @ResponseBody String addNewUser () {
-		User user = new User(null, "girish", "gopal", null);
-		user.setFirstName("girish");
-		user.setLastName("gopal");		
+	@PostMapping(path="/addUser") // Map ONLY GET Requests
+	public  String addNewUser (@RequestBody  User user) {				
 		userService.adduser(user);
 		return "Saved";
-	}*/
+	}
 	
 	@GetMapping(path="/getUser/{id}") // Map ONLY GET Requests
-	public ResponseEntity<User> getUser (@PathVariable("id") long id) {
-		User user= userService.getUser(id);
-		System.out.println(user);
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+	public User getUser (@PathVariable("id") long id) {
+		User user= userService.getUser(id);		  
+		return user;
 	}
 
 }

@@ -21,4 +21,6 @@ public class GreetingController {
 		Greeting greeting = new Greeting("hELLO");
 				return new ResponseEntity<>(greeting, HttpStatus.OK);
 	}
+	
+	
 }

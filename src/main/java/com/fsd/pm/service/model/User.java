@@ -16,18 +16,6 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long id;
 
-	String firstName;
-
-	String lastName;
-
-	Long emloyeeId;
-
-	@ManyToOne
-	Project project;
-
-	@ManyToOne
-	Task task;
-
 	public Long getId() {
 		return id;
 	}
@@ -52,42 +40,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public long getEmloyeeId() {
-		return emloyeeId;
-	}
+	String firstName;
 
-	public void setEmloyeeId(long emloyeeId) {
-		this.emloyeeId = emloyeeId;
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
-	}
-
-	public Task getTask() {
-		return task;
-	}
-
-	public void setTask(Task task) {
-		this.task = task;
-	}
+	String lastName;
 
 	
-//, @JsonProperty("project") Project project, @JsonProperty("task") Task task
-	 @JsonCreator
-	public User(@JsonProperty("id") Long id, @JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName, @JsonProperty("emloyeeId") Long emloyeeId) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emloyeeId = emloyeeId;
-		/*this.project = project;
-		this.task = task;*/
-	}
-	 
+	
 	 
 
 }

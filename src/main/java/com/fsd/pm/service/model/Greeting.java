@@ -1,9 +1,15 @@
 package com.fsd.pm.service.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Entity
 public class Greeting  {
+	@Id
+	Long id;
 
 	String firstName;
 

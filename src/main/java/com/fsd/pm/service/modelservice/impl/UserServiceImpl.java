@@ -1,5 +1,7 @@
 package com.fsd.pm.service.modelservice.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,8 @@ public class UserServiceImpl implements UserService {
 	UserRepository userRepository; 
 	
 	public User  getUser(Long id) {
-		return userRepository.getOne(id);
+		Optional<User> user =userRepository.findById(id);
+		return user.get();
 	}
 	
 	public User adduser(User user) {
