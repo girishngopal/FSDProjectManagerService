@@ -14,14 +14,22 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
+	Long userId;
+	
+	String firstName;
 
-	public Long getId() {
-		return id;
+	String lastName;
+	
+	String employeeId;
+
+	
+
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getFirstName() {
@@ -40,9 +48,16 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	String firstName;
+	public String getEmployeeId() {
+		return employeeId;
+	}
 
-	String lastName;
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	
+	
 
 	
 	

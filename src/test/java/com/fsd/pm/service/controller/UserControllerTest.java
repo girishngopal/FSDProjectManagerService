@@ -1,42 +1,47 @@
 package com.fsd.pm.service.controller;
 
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import com.fsd.pm.service.controller.UserController;
 import com.fsd.pm.service.model.User;
 import com.fsd.pm.service.modelservice.UserService;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = UserController.class, secure = false)
+@WebMvcTest(UserController.class)
 public class UserControllerTest {
-	
+
 	@Autowired
 	private MockMvc mockMvc;
-	
+
 	@MockBean
-	private UserService userService;
-	
-	User mockUser = new User();
+	private UserService userservice;
 
-
-	String exampleUser = "{\"id\": 2,\"firstName\": \"asw\",\"lastName\":\"gopal\"}";
-	
 	@Test
-	public void retrieveUser(){
-		Mockito.when(userService.getUser(Mockito.anyLong())).thenReturn(mockUser);
-		
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
-				"/user/getUser/2").accept(
-				MediaType.APPLICATION_JSON);
+	public void greetingShouldReturnMessageFromService() throws Exception {
+		User user = new User();
+		user.setFirstName("firstName");
+		user.setLastName("lastName");
+		when(userservice.getUser(Mockito.anyLong())).thenReturn(user);
+		this.mockMvc.perform(get("/user/getUser/1"))			
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.firstName",is("firstName")));
+			
+					
 	}
 
 }

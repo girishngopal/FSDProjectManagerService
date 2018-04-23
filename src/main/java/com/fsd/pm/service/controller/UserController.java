@@ -1,5 +1,7 @@
 package com.fsd.pm.service.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +22,9 @@ public class UserController {
 	
 	
 	
-	@PostMapping(path="/addUser") // Map ONLY GET Requests
-	public  String addNewUser (@RequestBody  User user) {				
-		userService.adduser(user);
+	@PostMapping(path="/updateUser") // Map ONLY GET Requests
+	public  String updateUser (@RequestBody  User user) {				
+		userService.addUpdateUser(user);
 		return "Saved";
 	}
 	
@@ -31,5 +33,14 @@ public class UserController {
 		User user= userService.getUser(id);		  
 		return user;
 	}
+	
+	
+	@GetMapping(path="/getAllUsers") // Map ONLY GET Requests
+	public List<User> getAllUsers () {
+		List<User> users= userService.getAllUsers();	  
+		return users;
+	}
+	
+	
 
 }
