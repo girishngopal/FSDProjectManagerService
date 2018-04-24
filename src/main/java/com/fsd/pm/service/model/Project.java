@@ -7,28 +7,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Project {
-	
+
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    Long id;
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long projectId;
+
 	String projectName;
-	
+
 	Date startDate;
-	
 
 	Date endDate;
-	
+
 	Integer priority;
 
-	public Long getId() {
-		return id;
+	Integer numberOfTask;
+
+	Long managerId;
+
+	String status;
+
+	String managerName;
+
+	public Long getProjectId() {
+		return projectId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setProjectId(Long projectId) {
+		this.projectId = projectId;
 	}
 
 	public String getProjectName() {
@@ -63,5 +73,36 @@ public class Project {
 		this.priority = priority;
 	}
 
+	public Integer getNumberOfTask() {
+		return numberOfTask;
+	}
+
+	public void setNumberOfTask(Integer numberOfTask) {
+		this.numberOfTask = numberOfTask;
+	}
+
+	public Long getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(Long managerId) {
+		this.managerId = managerId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getManagerName() {
+		return managerName;
+	}
+
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
 
 }

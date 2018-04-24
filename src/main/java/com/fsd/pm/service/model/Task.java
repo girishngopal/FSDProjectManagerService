@@ -13,13 +13,16 @@ public class Task {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    Long id;
+    Long taskId;
 	
 	@ManyToOne
 	Project project;
 	
 	@ManyToOne
 	ParentTask parentTask;
+	
+	@ManyToOne
+	User user;
 		
 	String taskName;
 	
@@ -29,14 +32,14 @@ public class Task {
 	
 	Integer priority;
 	
-	Integer statusCode;
+	Boolean status;
 
-	public Long getId() {
-		return id;
+	public Long getTaskId() {
+		return taskId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setTaskId(Long taskId) {
+		this.taskId = taskId;
 	}
 
 	public Project getProject() {
@@ -53,6 +56,14 @@ public class Task {
 
 	public void setParentTask(ParentTask parentTask) {
 		this.parentTask = parentTask;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getTaskName() {
@@ -87,11 +98,15 @@ public class Task {
 		this.priority = priority;
 	}
 
-	public Integer getStatusCode() {
-		return statusCode;
+	public Boolean getStatus() {
+		return status;
 	}
 
-	public void setStatusCode(Integer statusCode) {
-		this.statusCode = statusCode;
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
+
+	
+
+	
 }

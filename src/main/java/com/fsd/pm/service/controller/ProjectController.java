@@ -1,32 +1,34 @@
 package com.fsd.pm.service.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fsd.pm.service.model.Project;
-import com.fsd.pm.service.persistence.ProjectRepository;
+import com.fsd.pm.service.modelservice.ProjectService;
 
-@Controller    // This means that this class is a Controller
-@RequestMapping(path="/project")
+@RestController // This means that this class is a Controller
+@RequestMapping(path = "/project")
 public class ProjectController {
 
 	@Autowired
-	private ProjectRepository projectRepository;
-	
-	
-	
-	@GetMapping(path="/add") // Map ONLY GET Requests
-	public @ResponseBody String addNewUser () {
+	private ProjectService projectService;
 
-
-		Project project = new Project();
-		project.setProjectName("Demo");
-		projectRepository.save(project);
+	@PostMapping(path = "/updateProject") // Map ONLY GET Requests
+	public String updateProject(@RequestBody Project project) {
+		projectService.addUpdateProject(project);
 		return "Saved";
+	}
+
+	@GetMapping(path = "/getAllProjects") // Map ONLY GET Requests
+	public List<Project> getAllProjects() {
+		List<Project> projects = projectService.getAllProjects();
+		return projects;
 	}
 
 }
