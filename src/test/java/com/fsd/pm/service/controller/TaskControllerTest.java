@@ -20,7 +20,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fsd.pm.service.model.ParentTask;
 import com.fsd.pm.service.model.Project;
 import com.fsd.pm.service.model.Task;
@@ -68,8 +67,9 @@ public class TaskControllerTest {
 		taskModel.setPriority(1);
 		taskModel.setStatus(true);
 		taskModel.setParentId(1L);		
-		ObjectMapper mapper = new ObjectMapper();
-		String mockTasjJson = mapper.writeValueAsString(taskModel);
+		
+		String mockTasjJson = "{\"taskId\":1,\"parentId\":1,\"projectId\":1,\"userId\":1,\"parentName\":null,\"projectName\":null,\"taskName\":\"Task1\",\"userName\":null,\"startDate\":1525534264159,\"endDate\":null,\"priority\":1,\"status\":true}";
+		System.out.println(mockTasjJson);
 		Task mockTask = new Task();
 		mockTask.setTaskId(1L);
 		Project mockProject = new Project();
